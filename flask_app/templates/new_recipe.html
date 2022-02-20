@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Recipe</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Welcome {{user.full_name()}}!</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+    <form action="/recipe/create" method="post">
+        <h1>Add New Recipe</h1>
+        {% with messages = get_flashed_messages(category_filter=['recipe']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="description" cols="30" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="instructions">Instructions:</label>
+                <textarea name="instructions" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="date_made">Date Made On:</label>
+                <input type="date" name="date_made">
+            </div>
+            <div>
+                <label for="under_30_min">Under 30 Minutes?</label>
+                <div>
+                    <input type="radio" name="under_30_min" value="0">
+                    <label for="0">No</label>
+                </div>
+                <div>
+                    <input type="radio" name="under_30_min" value="1">
+                    <label for="1">Yes</label>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Add Recipe">
+    </form>
+</body>
+</html>

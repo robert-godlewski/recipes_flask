@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `user_recipes_schema`.`recipes` (
   `name` VARCHAR(50) NULL,
   `description` VARCHAR(100) NULL,
   `instructions` VARCHAR(200) NULL,
-  `under_30_min` BIT(1) NULL,
+  `under_30_min` INT NULL,
   `date_made` DATE NULL,
+  `user_id` INT NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
-  `user_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `user_id`

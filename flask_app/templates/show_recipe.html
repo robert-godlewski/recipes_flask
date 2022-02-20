@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Welcome {{user.full_name()}}!</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+    <div>
+        <h1>{{recipe.name}}</h1>
+        <div>
+            <p>Description: {{recipe.description}}</p>
+            <p>
+                Under 30 minutes: 
+                {% if recipe.under_30_min == 1 %}
+                Yes
+                {% else %}
+                No
+                {% endif %}
+            </p>
+            <p>Instructions: {{recipe.instructions}}</p>
+            <p>Date Made: {{recipe.date_made}}</p>
+        </div>
+    </div>
+</body>
+</html>
