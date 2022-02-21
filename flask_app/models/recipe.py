@@ -56,14 +56,13 @@ class Recipe:
             recipes.append(recipe)
         return recipes
 
-    # Need to fix
     @classmethod
     def edit_recipe(cls, data):
         print(f"Editing: {data}")
         query = '''
         UPDATE recipes 
         SET name = %(name)s, description = %(description)s, instructions = %(instructions)s, 
-        under_30_min = %(under_30_min)s, date_mode = %(date_mode)s, updated_at = NOW() 
+        under_30_min = %(under_30_min)s, date_made = %(date_made)s, updated_at = NOW() 
         WHERE id = %(id)s;
         '''
         return connectToMySQL(cls.db_name).query_db(query, data)
