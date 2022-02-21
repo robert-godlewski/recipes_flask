@@ -11,7 +11,8 @@ def form(): return render_template("index.html")
 
 @app.route('/register', methods=['POST'])
 def register():
-    if not User.validate_user(request.form): return redirect('/')
+    if not User.validate_user(request.form): 
+        return redirect('/')
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
@@ -36,7 +37,8 @@ def login():
 
 @app.route('/dashboard')
 def dashboard(): 
-    if 'user_id' not in session: return redirect('/logout')
+    if 'user_id' not in session: 
+        return redirect('/logout')
     data = {
         "id": session['user_id']
     }

@@ -56,10 +56,8 @@ def edit_recipe(id):
     }
     recipe_info = Recipe.get_recipe(data)
     user_info = User.get_one(user_data)
-    # might need to fix the HTML link
     return render_template("edit_recipe.html", user=user_info, recipe=recipe_info)
 
-# Might need to fix later on
 @app.route('/recipes/update', methods=['POST'])
 def update_recipe():
     if 'user_id' not in session:
